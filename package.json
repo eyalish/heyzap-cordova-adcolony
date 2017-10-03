@@ -1,6 +1,6 @@
 {
   "name": "heyzap-cordova-adcolony",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "AdColony Cordova plugin for the Heyzap Cordova Plugin",
   "cordova": {
     "id": "heyzap-cordova-adcolony",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Heyzap/heyzap-cordova-extras.git"
+    "url": "git+https://github.com/Heyzap/heyzap-cordova-adcolony.git"
   },
   "keywords": [
     "cordova",
@@ -39,8 +39,8 @@
   "author": "Heyzap Inc.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Heyzap/heyzap-cordova-extras/issues",
+    "url": "https://github.com/Heyzap/heyzap-cordova-adcolony/issues",
     "email": "support@heyzap.com"
   },
-  "homepage": "https://developers.heyzap.com/docs/cordova_sdk_setup_and_requirements#step-2-choose-your-3rdparty-sdks-optional"
+  "homepage": "https://developers.heyzap.com/docs/cordova_sdk_setup_and_requirements"
 }

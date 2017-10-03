@@ -11,7 +11,7 @@ SDK Verisons
 Installing
 ----------
 ```
-cordova plugin add https://github.com/Heyzap/heyzap-cordova-extras.git#:heyzap-cordova-adcolony
+cordova plugin add https://github.com/Heyzap/heyzap-cordova-adcolony.git
 ```
 
 Supported Platforms
