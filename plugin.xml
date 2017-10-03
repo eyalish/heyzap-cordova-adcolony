@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="heyzap-cordova-adcolony" version="1.1.0" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <name>Heyzap Cordova AdColony</name>
+  <description>AdColony Cordova plugin for the Heyzap Cordova Plugin</description>
+  <author>Heyzap Inc.</author>
+  <license>Heyzap</license>
+  <keywords>cordova,heyzap,phonegap,sdk,ad,mobile,mediation,adcolony</keywords>
+
+  <engines>
+    <engine name="cordova-android" version=">=4.0.0" />
+    <engine name="cordova-ios" version=">=3.8.0" />
+  </engines>
+
+  <!-- iOS -->
+  <platform name="ios">
+  
+    <!-- iOS 9 requires apps to use HTTPS; some networks require you to disable App Transport Security to workaround this. -->
+    <config-file target="*-Info.plist" parent="NSAppTransportSecurity">
+      <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+      </dict>
+    </config-file>
+    
+    <!-- URL scheme required by network -->
+    <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+      <array>
+        <string>fb</string>
+        <string>instagram</string>
+        <string>tumblr</string>
+        <string>twitter</string>
+      </array>
+    </config-file>
+    
+    <!-- Hooks -->
+    <hook type="before_plugin_install" src="hooks/before_plugin_install/000_create_symlinks.js" />
+    <!-- / Hooks -->
+    
+    <!-- AdColony SDK -->
+    <framework src="src/ios/AdColony.framework" custom="true" compiler-flags="-fmodules" />
+    <!-- / AdColony SDK -->
+
+    <!-- External Frameworks -->
+    <framework src="AudioToolbox.framework" />
+    <framework src="AVFoundation.framework" />
+    <framework src="CoreGraphics.framework" />
+    <framework src="CoreMedia.framework" />
+    <framework src="CoreTelephony.framework" />
+    <framework src="EventKit.framework" />
+    <framework src="EventKitUI.framework" />
+    <framework src="MediaPlayer.framework" />
+    <framework src="MessageUI.framework" />
+    <framework src="QuartzCore.framework" />
+    <framework src="SystemConfiguration.framework" />
+    <framework src="JavaScriptCore.framework" />
+
+    <framework src="AdSupport.framework" weak="true" />
+    <framework src="Social.framework" weak="true" />
+    <framework src="StoreKit.framework" weak="true" />
+    <framework src="WebKit.framework" weak="true" />
+    <framework src="WatchConnectivity.framework" weak="true" />
+
+    <framework src="libz.dylib"/>
+    <!-- / External Frameworks -->
+
+  </platform>
+  <!-- / iOS -->
+
+  <!-- Android -->
+  <platform name="android">
+
+    <!-- Native app manifest -->
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+      <uses-permission android:name="android.permission.INTERNET" />
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+      <uses-permission android:name="android.permission.VIBRATE" />
+    </config-file>
+    <!-- / Native app manifest -->
+    
+    <!-- Native app manifest - Application Tag -->
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <activity android:name="com.adcolony.sdk.AdColonyInterstitialActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:hardwareAccelerated="true"/>
+      <activity android:name="com.adcolony.sdk.AdColonyAdViewActivity" android:configChanges="keyboardHidden|orientation|screenSize" android:hardwareAccelerated="true"/>
+    </config-file>
+    <!-- / Native app manifest - Application Tag -->
+    
+    <!-- AdColony SDK -->
+    <source-file src="src/android/adcolony.jar" target-dir="libs" />
+    <source-file src="src/android/armeabi/libadcolony.so" target-dir="libs/armeabi" />
+    <source-file src="src/android/armeabi/libjs.so" target-dir="libs/armeabi" />
+    <!-- / AdColony SDK -->
+
+  </platform>
+  <!-- / Android -->
+
+</plugin>
